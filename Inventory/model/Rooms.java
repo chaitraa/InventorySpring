@@ -1,5 +1,4 @@
 package com.trial.model;
-
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -12,25 +11,7 @@ import java.util.List;
 
 @Getter
 @Setter
-public class rooms  {
+public class Rooms  {
     int roomId;
     public List<com.trial.model.availability> availability;
-
-   /* public List<com.trial.model.availability> getAvailability() {
-        return availability;
-    }
-
-    public void setAvailability(List<com.trial.model.availability> availability) {
-        this.availability = availability;
-    }
-
-    public int getRoomId() {
-        return roomId;
-    }
-
-    public void setRoomId(int roomId) {
-        this.roomId = roomId;
-    }*/
-
-
 }

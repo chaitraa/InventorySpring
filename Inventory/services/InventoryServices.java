@@ -1,11 +1,10 @@
 package com.trial.services;
-
 import com.fasterxml.jackson.databind.util.ISO8601DateFormat;
 import com.fasterxml.jackson.databind.util.JSONPObject;
 import com.mongodb.util.JSON;
 import java.time.format.DateTimeFormatter;
 import com.trial.model.Inventory;
-import com.trial.repository.InventoryRepositoryImpl;
+import com.trial.repository.InventoryRepository;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,33 +19,22 @@ import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
-/**
- * Created by technology on 8/3/17.
- */
-
-
 @Service
 public class InventoryServices {
-
     @Autowired
-    InventoryRepositoryImpl inventoryRepositoryImpl;
-
+    InventoryRepository inventoryRepository;
     public String deleteDemo() {
-        inventoryRepositoryImpl.deleteAll();
+        inventoryRepository.deleteAll();
         return "Deleted succesfully";
     }
-
     public List<Inventory> getInfo() {
-        return inventoryRepositoryImpl.findAll();
+        return inventoryRepository.findAll();
     }
 
     public String saveInventory(Inventory inventory) {
-        inventoryRepositoryImpl.save(inventory);
+        inventoryRepository.save(inventory);
         return "Saved succesfully";
     }
-
-
-
 }
 
 
@@ -69,32 +57,4 @@ public class InventoryServices {
 
 
 
-        // Date bookingDate=new Date("<2017-01-13T18:30:00Z>");
-        //InventoryInfo inventoryInfoId = InventoryRepositoryImpl.findById(inventory.getId());
-/*
-        LocalDate bookingDate = LocalDate.parse(inventory.getBookDate(), DateTimeFormatter.ISO_LOCAL_DATE);
-        inventory1.setHotelId(inventory.getHotelId());
-
-        inventory1.setBookDate(inventory.getBookDate());
-        inventory1.setBookingDate(bookingDate);
-        inventory1.setAccessKey(inventory.getAccessKey());
-        inventory1.setChannelId(inventory.getChannelId());
-        inventory1.availabilityList(inventory.getFree());
-        inventory1.setRoomId(inventory.getRoomId());
-        InventoryRepositoryImpl.save(inventory1);
-
-        //InventoryRepositoryImpl.insert(inventory.getHotelId(),inventory.getInventory(),bookingDate);
-
-
-        return "Saved succesfully";
-    }}
-*/
-     /*   public List<InventoryInfo> findByField(String text)
-        {
-            List<InventoryInfo> studentList= InventoryRepositoryImpl.findAll();
-            List<InventoryInfo> inventoryListResult=
-                    studentList.stream().filter(t->t.getBookDate()
-                            //t-> t.getCourse().equals(text) || t.getName().equals(text) || t.getId().equals(text) || (t.getGpa() == Double.parseDouble(text)))
-                            .collect(Collectors.toList());
-            return inventoryListResult;*/
 
